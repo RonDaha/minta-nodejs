@@ -1,4 +1,4 @@
-import { KnownError } from '../Errors';
+import { KnownError } from '../Errors'
 
 /* Centralized error handling */
 class ErrorHandler {
