@@ -1,25 +1,43 @@
-import express, { Application, Request, Response } from "express";
+import express, { Application } from 'express'
+import Api from './src/entry-points/Api'
+import { Meteor } from './src/domains/Nasa/Meteor'
+import { errorHandler } from "./src/utils/errorHandler";
+import {Nasa} from "./src/domains/Nasa/Nasa";
 
-const app: Application = express();
-const port = 3000;
+/* Uncaught errors handling */
+process.on('uncaughtException', (e: Error) => {
+    errorHandler.handleError(e)
+    if (!errorHandler.shouldStayAlive(e)) {
+        process.exit(-1)
+    }
+})
+process.on('unhandledRejection', (e: Error) => {
+    errorHandler.handleError(e)
+    if (!errorHandler.shouldStayAlive(e)) {
+        process.exit(-1)
+    }
+})
 
-// Body parsing Middleware
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
 
-app.get(
-	"/",
-	async (req: Request, res: Response): Promise<Response> => {
-		return res.status(200).send({
-			message: "Hello World!",
-		});
-	}
-);
+const bootstrap = async () => {
 
-try {
-	app.listen(port, (): void => {
-		console.log(`Connected successfully on port ${port}`);
-	});
-} catch (error) {
-	console.error(`Error occured: ${error.message}`);
+    const app: Application = express()
+    const port: number = 3000;
+
+    /* Middlewares */
+    app.use(express.json())
+    app.use(express.urlencoded({ extended: true }))
+
+    /* Entry Points (currently, only API supported) */
+    app.use('/nasa', Api)
+
+    /* Init relevant domains */
+    const nasa: Nasa = new Nasa()
+    await nasa.init()
+
+    /* Start the server */
+    app.listen(port, (): void => console.log(`Connected successfully on port ${port}`))
 }
+
+bootstrap()
+
