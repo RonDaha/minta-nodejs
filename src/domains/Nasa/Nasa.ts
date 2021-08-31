@@ -1,9 +1,9 @@
-import {Meteor} from "./Meteor";
-import {Weather} from "./Weather";
-import {FilterOptions} from "../../interfaces/FilterOptions";
-import {MeteorData, MeteorDataWithWeather} from "../../interfaces/MeteorData";
-import {HwsData} from "../../interfaces/WeatherData";
-import {errorHandler} from "../../utils/errorHandler";
+import { Meteor } from './Meteor'
+import { Weather } from './Weather'
+import { FilterOptions } from '../../interfaces/FilterOptions'
+import { MeteorData, MeteorDataWithWeather } from '../../interfaces/MeteorData'
+import { HwsData } from '../../interfaces/WeatherData'
+import { errorHandler } from '../../utils/errorHandler'
 
 /* The main domain's class which responsible the Nasa related business logic. */
 export class Nasa {
@@ -17,6 +17,7 @@ export class Nasa {
     }
 
     async init() {
+        /* Init relevant sub-domains */
         await this.meteor.init()
     }
 
@@ -26,7 +27,7 @@ export class Nasa {
             const hwsData: HwsData | null = await this.weather.getLastHws()
             return meteorData.map((record: MeteorData) => {
                 return {
-                    HWS: hwsData ? hwsData : null,
+                    HWS: hwsData,
                     ...record
                 }
             })

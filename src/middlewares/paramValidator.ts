@@ -5,15 +5,19 @@ import {isNumeric} from "../utils/helpers";
 /* Middleware to validate the query params */
 export const paramValidator = (req: Request<any, any, any, FilterOptions>, res: Response, next: NextFunction) => {
 
-    if(req.query.year && !isNumeric(req.query.year)) {
+    const handleBadRequest = (param: string) => {
         res.status(400)
-        res.send({ message: 'Invalid year value' })
+        console.debug(`request failed query param validation - ${param}`)
+        res.send({ message: `Invalid ${param} value` })
+    }
+
+    if(req.query.year && !isNumeric(req.query.year)) {
+        handleBadRequest('year')
         return
     }
 
     if(req.query.mass && !isNumeric(req.query.mass)) {
-        res.status(400)
-        res.send({ message: 'Invalid mass value' })
+        handleBadRequest('mass')
         return
     }
     /* On successful validation */

@@ -1,14 +1,14 @@
-import request from "../../utils/request";
-import { MeteorData } from "../../interfaces/MeteorData";
-import { FilterOptions } from "../../interfaces/FilterOptions";
-import { errorHandler } from "../../utils/errorHandler";
-import { MeteorCachedData } from "../../interfaces/MeteorCachedData";
-import { InitializeError } from "../../Errors";
+import request from '../../utils/request'
+import { MeteorData } from '../../interfaces/MeteorData'
+import { FilterOptions } from '../../interfaces/FilterOptions'
+import { errorHandler } from '../../utils/errorHandler'
+import { MeteorCachedData } from '../../interfaces/MeteorCachedData'
+import { InitializeError } from '../../Errors'
 
 /* Use as dictionary with the 'year' as the key */
 const meteorCachedData: MeteorCachedData = { all: [], byYear: {} }
 
-/* Responsible for the Meteor related business logic. */
+/* Sub-domain Responsible for the Meteor related business logic. */
 export class Meteor {
 
     constructor() {}

@@ -1,8 +1,7 @@
 import express, { Application } from 'express'
+import { errorHandler } from './src/utils/errorHandler'
+import { Nasa } from './src/domains/Nasa/Nasa'
 import Api from './src/entry-points/Api'
-import { Meteor } from './src/domains/Nasa/Meteor'
-import { errorHandler } from "./src/utils/errorHandler";
-import {Nasa} from "./src/domains/Nasa/Nasa";
 
 /* Uncaught errors handling */
 process.on('uncaughtException', (e: Error) => {
