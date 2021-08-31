@@ -4,7 +4,7 @@ import { Meteor } from '../src/domains/Nasa/Meteor'
 /* Testing the Nasa API is up and response the expected data structure */
 describe('Testing the Nasa Domain', () => {
 
-    test('Nasa API is up and the data manipulation is working as expected', async () => {
+    test('Nasa', async () => {
 
         /* Make sure the app initialize successfully (the Nasa API is up) */
         const nasa = new Nasa()

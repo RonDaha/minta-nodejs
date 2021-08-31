@@ -1,8 +1,8 @@
-import express, { Router, Request } from "express";
-import { FilterOptions } from "../interfaces/FilterOptions";
-import {Nasa} from "../domains/Nasa/Nasa";
-import {MeteorDataWithWeather} from "../interfaces/MeteorData";
-import {paramValidator} from "../middlewares/paramValidator";
+import express, { Router, Request } from 'express'
+import { FilterOptions } from '../interfaces/FilterOptions'
+import { Nasa } from '../domains/Nasa/Nasa'
+import { MeteorDataWithWeather } from '../interfaces/MeteorData'
+import { paramValidator } from '../middlewares/paramValidator'
 
 const Api: Router = express.Router()
 
