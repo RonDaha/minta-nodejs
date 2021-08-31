@@ -1,6 +1,5 @@
 import { Nasa } from '../src/domains/Nasa/Nasa'
 import { Meteor } from '../src/domains/Nasa/Meteor'
-import { Weather } from '../src/domains/Nasa/Weather'
 
 /* Testing the Nasa API is up and response the expected data structure */
 describe('Testing the Nasa Domain', () => {
