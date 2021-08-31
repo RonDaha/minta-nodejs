@@ -14,6 +14,7 @@ export class Meteor {
     constructor() {}
 
     private createDictionary(data: MeteorData[]): void {
+        meteorCachedData.all = data
         for (const record of data) {
             const recordDate = new Date(record.year)
             const year = recordDate.getFullYear()
