@@ -13,7 +13,7 @@ In real word app I would have use redis (or any other cache system) instead of s
 - Query param options - { 'year': number, 'mass': number }
 
 
-###In the project directory, run:
+### In the project directory, run:
 
 ### `npm install`
 ### `npm start`
